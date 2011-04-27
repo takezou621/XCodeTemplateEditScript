@@ -1,0 +1,33 @@
+＜はじめに＞
+このスクリプトはXcodeの各テンプレートプロジェクトにある___PROJECTNAMEASIDENTIFIER____Prefix.pchに以下の記述を追加します。
+
+#if DEBUG
+# define LOG(...) NSLog(__VA_ARGS__)
+# define LOG_METHOD NSLog(@"%s", __func__)
+#else
+# define LOG(...) ;
+# define LOG_METHOD ;
+#endif
+
+これにより、デバッグ環境でのみNSLogを出力したい場合の記述が簡単になります。
+
+＜実行方法＞
+最初にXCodeのBuild SettingsにあるPreprocessor MacrosのDebugに'DEBUG'を追加してください。
+次にコマンドラインから下記を実行してください。
+$./xcodeTemplateUpdate.sh
+
+以上で各テンプレートが更新されます。
+
+＜注意事項＞
+・スクリプトの実行を複数回行っても一度だけ追記されるようにしています。
+・XCode4環境で確認しているためその他のバージョンでの動作では問題が起こる可能性があります。
+・XCodeのインストールパスをデフォルトのものから変更している場合はこのスクリプトは使用できません。
+
+＜使い方＞
+スクリプト実行後、Preprocessor MacrosにDEBUGが定義されている環境でNSLogに記述を簡単に行うことができます。
+
+記述例：
+LOG(@"Hello."); // デバッグ環境のみNSLogを呼びたい場合
+LOG_METHOD	// デバッグ環境で実行中のメソッド名を出力したい場合
+
+
