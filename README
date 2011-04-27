@@ -1,7 +1,7 @@
 ＜はじめに＞
 このスクリプトはXcodeの各テンプレートプロジェクトにある___PROJECTNAMEASIDENTIFIER____Prefix.pchに以下の記述を追加します。
 
-#if DEBUG
+#ifdef DEBUG
 # define LOG(...) NSLog(__VA_ARGS__)
 # define LOG_METHOD NSLog(@"%s", __func__)
 #else
