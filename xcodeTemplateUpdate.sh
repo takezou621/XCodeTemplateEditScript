@@ -27,7 +27,7 @@ appTypes=("$appType1" "$appType2" "$appType3" "$appType4" "$appType5" "$appType6
  
 fileName=___PROJECTNAMEASIDENTIFIER____Prefix.pch
 
-appendStr='\n#if DEBUG\n#  define LOG(...) NSLog(__VA_ARGS__)\n#  define LOG_METHOD NSLog(@"%s", __func__)\n#else\n#  define LOG(...) ;\n#  define LOG_METHOD ;\n#endif'
+appendStr='\n#ifdef DEBUG\n#  define LOG(...) NSLog(__VA_ARGS__)\n#  define LOG_METHOD NSLog(@"%s", __func__)\n#else\n#  define LOG(...) ;\n#  define LOG_METHOD ;\n#endif'
 
 i=0
 cnt=17
